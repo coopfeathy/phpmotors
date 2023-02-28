@@ -14,8 +14,6 @@ function phpmotorsConnect()
     try{
         $link = new PDO($dsn, $username, $password, $options);
 
-        echo 'Hey I can connect!';
-
         return $link;
 
     } catch(PDOException $e){
@@ -25,6 +23,6 @@ function phpmotorsConnect()
 }
 
 
-phpmotorsConnect();
+// phpmotorsConnect();
 ?>
 

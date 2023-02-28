@@ -1,2 +1,2 @@
-<img src="../images/site/logo.png" alt = "Logo">
-<p>My Account</p>
+<img src="/phpmotors/images/site/logo.png" alt = "Logo">
+<p><a href = "/phpmotors/accounts/index.php?action=login">My Account</a></p>

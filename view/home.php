@@ -13,7 +13,7 @@
             <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/header.php'; ?>
         </header>
         <nav>
-            <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/nav.php'; ?>
+            <?php echo $navList; ?>
         </nav>
         <main>
             <section>
@@ -45,7 +45,7 @@
                 <h2>Delorean Upgrades</h2>
                 <div class = "upgrade">
                     <div class = "item">
-                        <img src = "images/upagrades/flux-cap.png" alt = "Flux Capacitor">
+                        <img src = "images/upgrades/flux-cap.png" alt = "Flux Capacitor">
                         <a href = "#">Flux Capacitor</a>
                     </div>
                     <div class = "item">
