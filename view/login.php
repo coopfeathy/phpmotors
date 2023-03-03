@@ -17,6 +17,11 @@
         </nav>
         <main>
             <h1>Sign in</h1>
+            <?php
+                if (isset($message)) {
+                    echo $message;
+                }
+            ?>
             <form action="/phpmotors/accounts/index.php" method="POST">
                 <label>Email</label>
                 <br>

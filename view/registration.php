@@ -17,6 +17,11 @@
         </nav>
         <main>
             <h1>Registration</h1>
+            <?php
+                if (isset($message)) {
+                    echo $message;
+                }
+            ?>
             <form action="/phpmotors/accounts/index.php" method="POST">
                 <label>First Name</label>
                 <br>
@@ -35,9 +40,11 @@
                 <br>
                 <label>Password</label>
                 <br>
-                <input name="clientPassword" id="clientPassword" type="password" required>
+                <input name="clientPassword" id="clientPassword" type="password">
                 <br>
-                <button type = "submit">Register</button>
+                <input type="submit" name="submit" id="regbtn" value="Register">
+                <!-- Add the action name - value pair -->
+                <input type="hidden" name="action" value="register">
             </form>
         </main>
         <footer>
