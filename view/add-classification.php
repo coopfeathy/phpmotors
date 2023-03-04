@@ -25,7 +25,7 @@
             <form action="/phpmotors/vehicles/index.php" method="POST">
                 <label>Classification Name</label>
                 <br>
-                <input type="text" name="newClassification" id="newClassification">
+                <input type="text" name="newClassification" id="newClassification" required>
                 <br>
                 <input type="submit" name="submit" id="regbtn" value="Register">
                 <!-- Add the action name - value pair -->
