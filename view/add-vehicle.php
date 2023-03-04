@@ -1,4 +1,7 @@
 <?php
+if (!$_SESSION['loggedin'] || $_SESSION['clientData']['clientLevel'] <= 1){
+    header('Location: /phpmotors/index.php/');
+}
 
 // Build a car classification drop down list.
 $carClassifications = "<select name = 'carClassifications'>";

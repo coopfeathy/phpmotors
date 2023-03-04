@@ -1,5 +1,5 @@
 <?php 
-if (!$_SESSION['loggedin'] || $_SESSION['clientData']['clientLevel'] <= 1){
+if (!$_SESSION['loggedin']){
     header('Location: /phpmotors/index.php/');
 }
 ?><!DOCTYPE html>
@@ -7,7 +7,7 @@ if (!$_SESSION['loggedin'] || $_SESSION['clientData']['clientLevel'] <= 1){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vehicle Management</title>
+    <title>Admin</title>
     <link href="https://fonts.googleapis.com/css2?family=Electrolize&family=Share+Tech&display=swap" rel="stylesheet">
     <link rel = "stylesheet" media="screen" href = "/phpmotors/css/main.css">
 </head>
@@ -20,14 +20,18 @@ if (!$_SESSION['loggedin'] || $_SESSION['clientData']['clientLevel'] <= 1){
             <?php echo $navList; ?>
         </nav>
         <main>
-            <h1>Vehicle Management</h1>
+            <h1><?php echo $_SESSION['clientData']['clientFirstname'].' '.$_SESSION['clientData']['clientLastname']; ?></h1>
+            <ul>
+                <li><?php echo "First Name: ".$_SESSION['clientData']['clientFirstname']; ?></li>
+                <li><?php echo "Last Name: ".$_SESSION['clientData']['clientLastname'] ?></li>
+                <li><?php echo "Email: ".$_SESSION['clientData']['clientEmail']; ?></li>
+                <li><?php echo "Level: ".$_SESSION['clientData']['clientLevel']; ?></li>
+            </ul>
             <?php
-                if (isset($message)) {
-                    echo $message;
-                }
+            if (intval($_SESSION['clientData']['clientLevel']) > 1){
+                echo "<a href = '/phpmotors/vehicles/'>Vehicle Management</a>";
+            }
             ?>
-            <p><a href = "/phpmotors/vehicles/index.php/?action=classifcation">Add a car classifcation.</a></p>
-            <p><a href = "/phpmotors/vehicles/index.php/?action=vehicle">Add a vehicle to inventory.</a></p>
         </main>
         <footer>
             <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/footer.php'; ?>

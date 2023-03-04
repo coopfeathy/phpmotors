@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - PHP Motors</title>
     <link href="https://fonts.googleapis.com/css2?family=Electrolize&family=Share+Tech&display=swap" rel="stylesheet">
-    <link rel="stylesheet" media="screen" href="css/main.css">
+    <link rel="stylesheet" media="screen" href="/phpmotors/css/main.css">
 </head>
 <body>
     <div class = "page">
@@ -19,7 +19,7 @@
             <section>
                 <h1>Welcome to PHP Motors!</h1>
                 <div class = "container">
-                    <img src = "images/delorean.jpg" alt = "Delorean">
+                    <img src = "/phpmotors/images/delorean.jpg" alt = "Delorean">
                     <h2>DMC Delorean</h2>
                     <p>
                         3 Cup holders<br>
@@ -45,19 +45,19 @@
                 <h2>Delorean Upgrades</h2>
                 <div class = "upgrade">
                     <div class = "item">
-                        <img src = "images/upgrades/flux-cap.png" alt = "Flux Capacitor">
+                        <img src = "/phpmotors/images/upgrades/flux-cap.png" alt = "Flux Capacitor">
                         <a href = "#">Flux Capacitor</a>
                     </div>
                     <div class = "item">
-                        <img src = "images/upgrades/flame.jpg" alt = "Flame Decals">
+                        <img src = "/phpmotors/images/upgrades/flame.jpg" alt = "Flame Decals">
                         <a href = "#">Flame Decals</a>
                     </div>
                     <div class = "item">
-                        <img src = "images/upgrades/bumper_sticker.jpg" alt = "Bumper Sticker">
+                        <img src = "/phpmotors/images/upgrades/bumper_sticker.jpg" alt = "Bumper Sticker">
                         <a href = "#">Bumper Sticker</a>
                     </div>
                     <div class = "item">
-                        <img src = "images/upgrades/hub-cap.jpg" alt = "Hub Caps">
+                        <img src = "/phpmotors/images/upgrades/hub-cap.jpg" alt = "Hub Caps">
                         <a href = "#">Hub Caps</a>
                     </div>
                 </div>
