@@ -1,5 +1,5 @@
 <?php 
-if (!$_SESSION['loggedin'] || $_SESSION['clientData']['clientLevel'] <= 1){
+if (!$_SESSION['loggedin'] || $_SESSION['clientData']['clientLevel'] < 2){
     header('Location: /phpmotors/index.php/');
 }
 ?><!DOCTYPE html>
@@ -28,10 +28,21 @@ if (!$_SESSION['loggedin'] || $_SESSION['clientData']['clientLevel'] <= 1){
             ?>
             <p><a href = "/phpmotors/vehicles/index.php/?action=classifcation">Add a car classifcation.</a></p>
             <p><a href = "/phpmotors/vehicles/index.php/?action=vehicle">Add a vehicle to inventory.</a></p>
+            <?php
+            if (isset($classificationList)) { 
+                echo '<h2>Vehicles By Classification</h2>'; 
+                echo '<p>Choose a classification to see those vehicles</p>'; 
+                echo $classificationList; 
+            }
+            ?>
+            <noscript>
+                <p><strong>JavaScript Must Be Enabled to Use this Page.</strong></p>
+            </noscript>
+            <table id="inventoryDisplay"></table>
         </main>
         <footer>
             <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/footer.php'; ?>
         </footer>
     </div>
 </body>
-</html>
+</html><?php unset($_SESSION['message']); ?>
