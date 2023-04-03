@@ -35,10 +35,10 @@ if (!$_SESSION['loggedin'] || $_SESSION['clientData']['clientLevel'] < 2){
                 echo $classificationList; 
             }
             ?>
+            <table id="inventoryDisplay"></table>
             <noscript>
                 <p><strong>JavaScript Must Be Enabled to Use this Page.</strong></p>
             </noscript>
-            <table id="inventoryDisplay"></table>
         </main>
         <footer>
             <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/footer.php'; ?>

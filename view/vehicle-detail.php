@@ -20,6 +20,11 @@
             <?php if(isset($message)){
                     echo $message; }
             ?>
+            <?php 
+                if(isset($thumbnailsList)){
+                    echo $thumbnailsList;
+                }
+            ?>
             <?php if(isset($vehicleHTML)){
                     echo $vehicleHTML; } 
             ?>
