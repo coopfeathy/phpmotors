@@ -152,6 +152,55 @@ footer {
     max-width: 100%;
 }
 
+
+
+
+.search-icon{
+    width: 50px;
+    height: auto;
+    margin: 0 0 0 5px;
+}
+
+.search-form{
+    display: flex;
+    flex-direction: column;
+    margin: 1em 0;
+    align-items: center;
+}
+.search-form [type="search"]{
+    width: 56%;
+    height: 40px;
+}
+.search-form label{
+    color: #2c29c5;
+    font-weight: bold;
+}
+h2 .displayResult{
+    margin: 20px auto;
+    text-align: center;
+    background-color: rgb(231, 230, 230);
+    padding: 0.6em;
+    max-width: 60%;
+}
+.searchList{
+    margin: 10px 0 20px 25px;
+    max-width: 70%;
+}
+.vehicleImgDesc{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin: 8px 0 25px 0;
+}
+.vehicleImgDesc img{
+    width: 120px;
+    height: auto;
+    border-radius: 4px;
+}
+
+
+
+
 /* Tablet Size viewports */
 @media only screen and (min-width: 37em) {
     .page {
@@ -226,4 +275,5 @@ footer {
 	#inv-display div {
 		width: 100%;
 	}
+
 }

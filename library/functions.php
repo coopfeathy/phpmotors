@@ -234,5 +234,29 @@ function thumbnailHTML($thumbnailList){
     return $html;
 }
 
+ //Function to build the serach result and wrap it in HTML
+ function buildSearchResult($searchResult){
+    //Create the dynamic select list
+    $searchList = "<hr><div class='searchList'>";
+    foreach ($searchResult as $result) {
+        $searchList .= "<h2 value='$result[invId]'><a href='/phpmotors/vehicles/?action=getVehicleDetail&valueId=$result[invId]'> $result[invMake] $result[invModel]</a></h2>";
+        $searchList .= "<div class='vehicleImgDesc'>
+                            <a href='/phpmotors/vehicles/?action=getVehicleDetail&valueId=$result[invId]'><img src='$result[invThumbnail]' alt='image of $result[invMake] $result[invModel] on PHPMOTORS'></a>
+                            <p>$result[invDescription]</p>
+                        </div>";
+    }
+    $searchList .= '</div>';
+    return $searchList;
+}    
 
+function paginationFunc($totalRecords, $limit, $searchKey){
+    $total_pages = ceil($totalRecords / $limit); 
+    // echo  $total_pages;
+    $pagLink = "<ul class='pagination'>";  
+    for ($i=1; $i<=$total_pages; $i++) {
+                $pagLink .= "<li class='page-item'><a class='page-link' href='/phpmotors/search/?action=Search-Key&searchKey=$searchKey&page=".$i."'>".$i."</a></li>";	
+    }
+    echo $pagLink . "</ul>";  
+    return $pagLink;
+}
 ?>
