@@ -1,63 +1,87 @@
 <?php
-if (!$_SESSION['loggedin'] || $_SESSION['clientData']['clientLevel'] <= 1){
-    header('Location: /phpmotors/index.php/');
+if ($_SESSION['clientData']['clientLevel'] < 2) {
+    header('location: /phpmotors/');
+    exit;
 }
-?><!DOCTYPE html>
-<html lang="en-US">
+?>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php if(isset($invInfo['invMake']) && isset($invInfo['invModel'])){ 
-		echo "Delete $invInfo[invMake] $invInfo[invModel]";} 
-	    elseif(isset($invMake) && isset($invModel)) { 
-		echo "Delete $invMake $invModel"; }?></title>
-    <link href="https://fonts.googleapis.com/css2?family=Electrolize&family=Share+Tech&display=swap" rel="stylesheet">
-    <link rel = "stylesheet" media="screen" href = "/phpmotors/css/main.css">
+    <title><?php if (isset($invInfo['invMake'])) {
+                echo "Delete $invInfo[invMake] $invInfo[invModel]";
+            } ?> | PHP Motors</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/phpmotors/css/css.css">
 </head>
+
 <body>
-    <div class = "page">
+    <!-- BS: need the container div -->
+    <div class="container">
         <header>
-            <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/header.php'; ?>
+            <?php include $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/header.php'; ?>
         </header>
+
         <nav>
-            <?php echo $navList; ?>
-        </nav>
-        <main>
-            <h1><?php if(isset($invInfo['invMake']) && isset($invInfo['invModel'])){ 
-		        echo "Delete $invInfo[invMake] $invInfo[invModel]";} 
-	            elseif(isset($invMake) && isset($invModel)) { 
-		        echo "Delete $invMake $invModel"; }?></h1>
-            <p>Confirm Vehicle Deletion. The delete is permanent.</p>
             <?php
-                if (isset($message)) {
-                    echo $message;
-                }
+            // BS: Navigation should go outside of the header tag
+            echo $navList;
             ?>
-            <form action="/phpmotors/vehicles/index.php" method="POST">
-                <label>Make</label>
-                <br>
-                <input type="text" name="make" id="make" <?php if(isset($invInfo['invMake'])) {echo "value='$invInfo[invMake]'"; } ?> readonly>
-                <br>
-                <br>
-                <label>Model</label>
-                <br>
-                <input type="text" name="model" id="model" <?php if(isset($invInfo['invModel'])) {echo "value='$invInfo[invModel]'"; } ?> readonly>
-                <br>
-                <br>
-                <label>Description</label>
-                <br>
-                <textarea name="description" rows="10" cols="30" readonly><?php if(isset($invInfo['invDescription'])) {echo $invInfo['invDescription']; } ?></textarea>
-                <br>
-                <br>
-                <input type="submit" name="submit" value="Delete Vehicle">
-                <!-- Add the action name - value pair -->
+        </nav>
+        <h1><?php if (isset($invInfo['invMake'])) {
+                echo "Delete $invInfo[invMake] $invInfo[invModel]";
+            } ?></h1>
+        <?php echo $message;
+        ?>
+        <?php
+        if (isset($_SESSION['message'])) {
+            $message = $_SESSION['message'];
+        }
+        ?>
+        <p>Confirm Vehicle Deletion. The delete is permanent.</p>
+        <!-- BS: no need to add an image  here: <img src="/phpmotors/images/no-image.png" alt="no image available"> -->
+        <form method="post" action="/phpmotors/vehicles/">
+            <fieldset>
+                <label for="invMake">Vehicle Make</label>
+                <input type="text" readonly name="invMake" id="invMake" <?php
+                                                                        if (isset($invInfo['invMake'])) {
+                                                                            echo "value='$invInfo[invMake]'";
+                                                                        } ?>>
+
+                <label for="invModel">Vehicle Model</label>
+                <input type="text" readonly name="invModel" id="invModel" <?php
+                                                                            if (isset($invInfo['invModel'])) {
+                                                                                echo "value='$invInfo[invModel]'";
+                                                                            } ?>>
+
+                <label for="invDescription">Vehicle Description</label>
+                <textarea name="invDescription" readonly id="invDescription"><?php
+                                                                                if (isset($invInfo['invDescription'])) {
+                                                                                    echo $invInfo['invDescription'];
+                                                                                }
+                                                                                ?></textarea>
+
+                <input type="submit" class="regbtn" name="submit" value="Delete Vehicle">
+
                 <input type="hidden" name="action" value="deleteVehicle">
-                <input type="hidden" name="invId" value="<?php if(isset($invInfo['invId'])){ echo $invInfo['invId'];}  ?>">
-            </form>
-        </main>
+                <input type="hidden" name="invId" value="<?php if (isset($invInfo['invId'])) {
+                                                                echo $invInfo['invId'];
+                                                            } ?>">
+
+            </fieldset>
+        </form>
+        <a href="/phpmotors/vehicles/index.php?action=updateVehicle"></a>
         <footer>
-            <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/footer.php'; ?>
+            <!-- BS: no nav tag here. <nav id="footer"> -->
+            <?php require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/footer.php'; ?>
         </footer>
+        <!-- BS: closing container -->
     </div>
 </body>
+
 </html>
+<?php unset($_SESSION['message']); ?>

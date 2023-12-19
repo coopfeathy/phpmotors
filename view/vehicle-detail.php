@@ -1,37 +1,48 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo "$vehiclesDetail[invMake] $vehiclesDetail[inModel]"; ?> | PHP Motors, Inc.</title>
-    <link href="https://fonts.googleapis.com/css2?family=Electrolize&family=Share+Tech&display=swap" rel="stylesheet">
-    <link rel = "stylesheet" media="screen" href = "/phpmotors/css/main.css">
+    <title><?php if (isset($invInfo['invMake'])) {
+                echo "$invInfo[invMake] $invInfo[invModel]";
+            } ?> | PHP Motors</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/phpmotors/css/css.css">
 </head>
+
 <body>
-    <div class = "page">
-        <header>
-            <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/header.php'; ?>
-        </header>
-        <nav>
-            <?php echo $navList; ?>
-        </nav>
-        <main>
-            <h1><?php echo "$vehiclesDetail[invMake] $vehiclesDetail[inModel]"; ?></h1>
-            <?php if(isset($message)){
-                    echo $message; }
-            ?>
-            <?php 
-                if(isset($thumbnailsList)){
-                    echo $thumbnailsList;
-                }
-            ?>
-            <?php if(isset($vehicleHTML)){
-                    echo $vehicleHTML; } 
-            ?>
-        </main>
-        <footer>
-            <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/footer.php'; ?>
-        </footer>
-    </div>
+  <div>
+    <!-- header section -->
+    <?php include $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/header.php'; ?>
+    <!-- Navigation section -->
+    <nav>
+      <?php echo $navList; ?>
+    </nav>
+
+
+  </div>
+
+  <main>
+ 
+  
+<?php if(isset($message)){
+ echo $message; }
+ ?>
+
+
+<?php if(isset($vehicleDisplay)){
+ echo $vehicleDisplay;
+} ?>
+
+
+
+  </main>
+
+  <!-- Footer section -->
+  <?php include $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/footer.php'; ?>
+
 </body>
+
 </html>

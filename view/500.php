@@ -1,31 +1,22 @@
 <!DOCTYPE html>
-<html lang="en-US">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Server Error - PHP Motors</title>
-    <link href="https://fonts.googleapis.com/css2?family=Electrolize&family=Share+Tech&display=swap" rel="stylesheet">
-    <link rel = "stylesheet" media="screen" href = "../css/main.css">
-</head>
+<html lang="en">
+<header>
+    <nav id="header">
+        <?php require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/header.php'; ?> 
+    </nav>
+
+    <nav id="navigation">
+        <?php require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/navigation.php'; ?> 
+    </nav>
+</header>
+    
 <body>
-    <div class = "page">
-        <header>
-            <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/header.php'; ?>
-        </header>
-        <nav>
-            <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/nav.php'; ?>
-        </nav>
-        <main>
-            <section>
-                <h1>Server Error</h1>
-                <p>
-                    Sorry, our server seems to be experiencing some technical difficulties.
-                </p>
-            </section>
-        </main>
-        <footer>
-            <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/footer.php'; ?>
-        </footer>
-    </div>
+    <h3>SERVER ERROR</h3>
+    <p>Sorry, but our server seems to be experiencing technical difficulties.</p>
 </body>
+<footer>
+    <nav id="footer">
+        <?php require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/footer.php'; ?> 
+    </nav>
+</footer>
 </html>

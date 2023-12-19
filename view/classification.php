@@ -1,32 +1,32 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $classificationName; ?> vehicles | PHP Motors, Inc.</title>
-    <link href="https://fonts.googleapis.com/css2?family=Electrolize&family=Share+Tech&display=swap" rel="stylesheet">
-    <link rel="stylesheet" media="screen" href="/phpmotors/css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/phpmotors/css/css.css">
 </head>
+
 <body>
-    <div class = "page">
-        <header>
-            <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/header.php'; ?>
-        </header>
-        <nav>
-            <?php echo $navList; ?>
-        </nav>
-        <main>
+    <main>
+        <div class="view">
             <h1><?php echo $classificationName; ?> vehicles</h1>
-            <?php if(isset($message)){
-                    echo $message; }
+
+            <?php if (isset($message)) {
+                echo $message;
+            }
             ?>
-            <?php if(isset($vehicleDisplay)){
-                    echo $vehicleDisplay; } 
-            ?>
-        </main>
-        <footer>
-            <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/footer.php'; ?>
-        </footer>
-    </div>
+
+
+
+            <?php if (isset($vehicleDisplay)) {
+                echo $vehicleDisplay;
+            } ?>
+        </div>
+    </main>
 </body>
+
 </html>

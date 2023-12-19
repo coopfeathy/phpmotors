@@ -1,8 +1,9 @@
-<?php 
-// The model for the vehicle inventory image uploads.
+<?php
+//This is for vehicle inventory image uploads
 
 // Add image information to the database table
-function storeImages($imgPath, $invId, $imgName, $imgPrimary) {
+function storeImages($imgPath, $invId, $imgName, $imgPrimary)
+{
     $db = phpmotorsConnect();
     $sql = 'INSERT INTO images (invId, imgPath, imgName, imgPrimary) VALUES (:invId, :imgPath, :imgName, :imgPrimary)';
     $stmt = $db->prepare($sql);
@@ -30,7 +31,8 @@ function storeImages($imgPath, $invId, $imgName, $imgPrimary) {
 }
 
 // Get Image Information from images table
-function getImages() {
+function getImages()
+{
     $db = phpmotorsConnect();
     $sql = 'SELECT imgId, imgPath, imgName, imgDate, inventory.invId, invMake, invModel FROM images JOIN inventory ON images.invId = inventory.invId';
     $stmt = $db->prepare($sql);
@@ -41,7 +43,8 @@ function getImages() {
 }
 
 // Delete image information from the images table
-function deleteImage($imgId) {
+function deleteImage($imgId)
+{
     $db = phpmotorsConnect();
     $sql = 'DELETE FROM images WHERE imgId = :imgId';
     $stmt = $db->prepare($sql);
@@ -52,8 +55,11 @@ function deleteImage($imgId) {
     return $result;
 }
 
+
+
 // Check for an existing image
-function checkExistingImage($imgName){
+function checkExistingImage($imgName)
+{
     $db = phpmotorsConnect();
     $sql = "SELECT imgName FROM images WHERE imgName = :name";
     $stmt = $db->prepare($sql);
@@ -63,15 +69,3 @@ function checkExistingImage($imgName){
     $stmt->closeCursor();
     return $imageMatch;
 }
-
-function getThumbnails($invId){
-    $db = phpmotorsConnect();
-    $sql = "SELECT imgPath, imgName FROM images JOIN inventory ON images.invId = inventory.invId WHERE images.imgPath Like '%-tn%' AND inventory.invId = :invId";
-    $stmt = $db->prepare($sql);
-    $stmt->bindValue(':invId', $invId, PDO::PARAM_INT);
-    $stmt->execute();
-    $invInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    $stmt->closeCursor();
-    return $invInfo;
-}
-?>

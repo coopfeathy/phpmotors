@@ -1,32 +1,23 @@
---Insert Tony Stark
-INSERT INTO clients
-(clientFirstname, clientLastname, clientEmail, clientPassword, comment)
-VALUES
-("Tony", "Stark", "tony@starkent.com", "Iam1ronM@n", "I am the real Ironman");
+--Query One
+INSERT INTO clients (clientFirstname, clientLastname, clientEmail, clientPassword, comment) VALUES ('Tony', 'Stark', 'tony@starkent.com', 'Iam1ronM@n', 'I am the real Ironman');
 
---Read the clients table
-SELECT clientId, clientFirstname, clientLastname, clientLevel FROM clients;
+--Query Two
+UPDATE clients SET clientLevel = 3 WHERE clientLastName = 'Stark';
 
---Update Tony Stark from level 1 to level 3
-Update clients SET clientLevel = '3' WHERE clientFirstname = 'Tony';
+--Query Three
+SELECT Replace ("Do you have 6 kids and like to go off-roading? The Hummer gives you the small interiors with an engine to get you out of any muddy or rocky situation", "small", "spacious");
 
---Find the GM Hummer
-SELECT invId, invMake, invModel, invDescription FROM inventory WHERE invMake = 'GM';
+--Query Four
+SELECT invModel, classificationName
+FROM inventory i
+INNER JOIN carclassification ON i.classificationId = carclassification.classificationId
+WHERE classificationName = 'SUV';
 
---Update the GM Hummer description
-UPDATE inventory SET invDescription = REPLACE(invDescription, 'small interior', 'spacious interior');
+--Query Five
+DELETE 
+FROM inventory
+WHERE invId = 1;
 
---Find the SUV
-SELECT carclassification.classificationId, carclassification.classificationName, inventory.invMake, inventory.invModel FROM inventory INNER JOIN carclassification ON inventory.classificationId = carclassification.classificationId WHERE carclassification.classificationName = 'SUV';
 
---Find the Jeep
-SELECT invId, invMake, invModel, invDescription FROM inventory WHERE invMake = 'Jeep';
-
---Delete the Jeep
-DELETE FROM inventory WHERE invId = 1;
-
---Find Images and Thumbnails
-SELECT invImage, invThumbnail FROM inventory;
-
---Update Images and Thumbnails
-UPDATE inventory SET invImage = CONCAT('/phpmotors', invImage), invThumbnail = CONCAT('/phpmotors', invThumbnail);
+--Query Six
+UPDATE inventory SET invThumbnail = CONCAT('/phpmotors', invThumbnail), invImage = CONCAT('/phpmotors', invImage);
